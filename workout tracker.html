@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <style>
+        body { font-family: sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; margin: 0; }
+        .container { max-width: 400px; margin: auto; background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; }
+        h2 { text-align: center; color: #58a6ff; }
+        input, button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #c9d1d9; box-sizing: border-box; }
+        button { background: #238636; color: white; border: none; font-weight: bold; cursor: pointer; }
+        button:hover { background: #2ea043; }
+        ul { list-style: none; padding: 0; margin-top: 20px; }
+        li { background: #21262d; padding: 10px; margin-top: 5px; border-radius: 4px; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Workout Tracker</h2>
+        <input type="text" id="exercise" placeholder="Exercise Name (e.g., Pushups)">
+        <input type="text" id="reps" placeholder="Reps / Sets">
+        <button onclick="addWorkout()">Add Workout</button>
+        <ul id="workoutList"></ul>
+    </div>
+
+    <script>
+        function addWorkout() {
+            const exercise = document.getElementById('exercise').value;
+            const reps = document.getElementById('reps').value;
+            if(!exercise || !reps) return alert('Please fill in both fields');
+            
+            const list = document.getElementById('workoutList');
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${exercise}</span><span>${reps}</span>`;
+            list.appendChild(li);
+            
+            document.getElementById('exercise').value = '';
+            document.getElementById('reps').value = '';
+        }
+    </script>
+</body>
+</html>
